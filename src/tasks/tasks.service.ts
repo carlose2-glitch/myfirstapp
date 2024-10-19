@@ -1,4 +1,6 @@
 import { Injectable } from "@nestjs/common"; 
+import { CreateTaskDto } from "./dto/create-task.dto";
+import { updateTaskDto } from "./dto/update-task.dto";
 
 
 export interface User{
@@ -17,12 +19,16 @@ export class TasksService {
         return this.tasks;
     }
 
-    createTask(task: any){
+    getTask(id:number){
+        return this.tasks.find(task => task.id === id);
+    }
+
+    createTask(task: CreateTaskDto){
         console.log(task);
-        this.tasks.push(task)
+        this.tasks.push({...task, id:this.tasks.length + 1})
         return task;
     }
-    updateTask(){
+    updateTask(task: updateTaskDto){
         return 'Actualizando tareas'
     }
     deleteTask(){
