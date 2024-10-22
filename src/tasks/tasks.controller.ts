@@ -2,9 +2,11 @@ import {Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post, Pu
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { updateTaskDto } from './dto/update-task.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 
 @Controller('/tasks')
+@ApiTags('task')
 export class TaskController {
 
     tasksService:TasksService;
